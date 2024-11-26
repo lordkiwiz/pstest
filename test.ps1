@@ -1,2 +1,2 @@
 gc welcome.txt
-gc welcome.txt | measure -words
+gc welcome.txt | measure -word
