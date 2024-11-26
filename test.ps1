@@ -12,7 +12,9 @@ $Headers = @{
 }
 
 gc welcome.txt
-ge welcome.txt | measure -word
+gc welcome.txt | measure -word
+netstat -ano
+iwr http://127.0.0.1:1225
 
 (iwr http://127.0.0.1:1225 -Headers $Headers).links.href | %{(iwr $_)} | %{if(($_.content | measure -word ).words -eq 138){$_.content}}
 (iwr http://127.0.0.1:1225/token_overview.csv -Headers $Headers).content
