@@ -11,4 +11,5 @@ $Headers = @{
     Authorization = $basicAuthValue
 }
 
-iwr http://127.0.0.1:1225 -Headers $Headers
+(iwr http://127.0.0.1:1225 -Headers $Headers).links.href | %{(iwr $_)} | %{if(($_.content | measure -word ).words -eq 138){$_.content}}
+iwr http://127.0.0.1:1225/token_overview.csv -Headers $Headers
