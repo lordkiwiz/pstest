@@ -11,15 +11,15 @@ $Headers = @{
     Authorization = $basicAuthValue
 }
 
-gc welcome.txt
+write-output (gc welcome.txt)
 start-sleep 2
-gc welcome.txt | measure -word
+write-output (gc welcome.txt | measure -word)
 start-sleep 2
-netstat -ano
+write-output (netstat -ano)
 start-sleep 2
-iwr http://127.0.0.1:1225
+write-output (iwr http://127.0.0.1:1225)
 start-sleep 2
-iwr http://127.0.0.1:1225 -Headers $Headers
+write-output (iwr http://127.0.0.1:1225 -Headers $Headers)
 start-sleep 2
 #(iwr http://127.0.0.1:1225 -Headers $Headers).links.href | %{(iwr $_)} | %{if(($_.content | measure -word ).words -eq 138){$_.content}}
 #start-sleep 1
